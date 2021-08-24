@@ -6,7 +6,6 @@ map_timeseries <- function(site_info, plot_info_csv, out_file) {
     extract(col='filepath', into='state_cd', regex='3_visualize/out/timeseries_([[:alpha:]]{2})\\.png', remove=FALSE) %>%
     select(state_cd, filepath) %>%
     left_join(select(site_info, state_cd, site_no, station_nm, dec_lat_va, dec_long_va, count_nu), by='state_cd')
-
   # prepare map aesthetics
   marker_colors = c('white', 'orange', 'lightred', 'red', 'darkred')
   map_info <- map_data %>% mutate(
